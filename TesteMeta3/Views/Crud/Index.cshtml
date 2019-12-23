@@ -1,0 +1,84 @@
+﻿@using TesteMeta2.Core
+
+@{
+    ViewBag.Title = "Crud";
+    Tabela tabela = (Tabela)ViewBag.Tabela;
+    List<Registro> Registros = (List<Registro>)ViewBag.Dados;
+}
+<div class="table-responsive">
+
+    <table width="100%">
+        <tr>
+            <td><h2>@tabela.Titulo</h2></td>
+            <td class="text-right">
+
+                @foreach (Acao acao in tabela.Acoes.Where(ee => !ee.AcaoNoRegistro))
+                {
+                    <a href="@Url.Action(acao.Nome, "Crud", new { area="" })" title="@acao.Titulo">
+                        <img src="../../../@acao.UrlImagem" />
+                    </a>
+                    @Html.ActionLink(acao.Titulo, acao.Nome, "Crud", new { id = tabela.Codigo }, null)
+                    Write(" | ");
+                }
+            </td>
+        </tr>
+    </table>
+    @using (Html.BeginForm("Pesquisar/" + tabela.Codigo, "Crud"))
+    {
+        @Html.Hidden("id", tabela.Nome)
+        <table width="100%" class="table-responsive">
+            <tr>
+                <td>
+                    Pesquisar por:
+                    @Html.TextBox("conteudo", "", new { size = "100" })
+
+                    Ordenar por:
+                    <select name="ordem">
+                        @foreach (Coluna coluna in tabela.Colunas.Where(ee => ee.Ordenavel).OrderBy(ee => ee.Ordem))
+                        {
+                            <option value="@coluna.Nome"
+                                    @{ if (coluna.Nome.Equals(ViewBag.Ordenacao)) { @: selected="selected"
+                                    } }>
+                                @coluna.Titulo
+                            </option>
+                        }
+                    </select>
+
+                    <button type="submit" class="btn btn-primary">Aplicar</button>
+                    @Html.ActionLink("Limpar", "Limpar/" + tabela.Codigo, "Crud", new { area = "" }, null)
+
+                    <img src="~/Imagens/tabela_cards.png" onclick="swap_display('tabela_cards')" />
+                    <img src="~/Imagens/tabela_linhas.png" onclick="swap_display('tabela_lista')" />
+                    <img src="~/Imagens/tabela_sequencia.png" onclick="swap_display('tabela_sequencia')" />
+
+                </td>
+            </tr>
+        </table>
+    }
+
+</div>
+
+<div id="tabela_lista" name="tabela" style="display: normal">
+    @{Html.RenderPartial("index_lista"); }
+</div>
+<div id="tabela_cards" name="tabela" style="display: normal">
+    @{Html.RenderPartial("index_detalhe"); }
+</div>
+<div id="tabela_sequencia" name="tabela" style="display: normal">
+    @{Html.RenderPartial("index_sequencia"); }
+</div>
+
+
+<script type="text/javascript">
+    function swap_display(modo) {
+        var tags = document.getElementsByName('tabela');
+        for (i = 0; i < tags.length; i++) {
+            if (tags[i].id == modo) {
+                tags[i].style.display = "block";
+            } else {
+                tags[i].style.display = "none";
+            }
+        }
+    }
+    swap_display('tabela_lista');
+</script>

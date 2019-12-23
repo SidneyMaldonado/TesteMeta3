@@ -1,0 +1,620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EspacoModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_acao">
+          <Key>
+            <PropertyRef Name="cd_acao" />
+            <PropertyRef Name="cd_menu" />
+          </Key>
+          <Property Name="cd_acao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cd_menu" Type="int" Nullable="false" />
+          <Property Name="ds_acao" Type="varchar" MaxLength="100" />
+          <Property Name="dm_situacao" Type="bit" />
+          <Property Name="cd_usuario_inc" Type="int" />
+          <Property Name="dt_inclusao" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_coluna">
+          <Key>
+            <PropertyRef Name="col_codigo" />
+          </Key>
+          <Property Name="col_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tb_codigo" Type="int" Nullable="false" />
+          <Property Name="col_nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="col_titulo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="td_codigo" Type="int" Nullable="false" />
+          <Property Name="col_tamanho" Type="int" Nullable="false" />
+          <Property Name="col_podevazio" Type="bit" Nullable="false" />
+          <Property Name="col_primarykey" Type="bit" Nullable="false" />
+          <Property Name="col_visivel" Type="bit" Nullable="false" />
+          <Property Name="col_filtrar_coluna" Type="bit" Nullable="false" />
+          <Property Name="tb_tabela" Type="varchar" MaxLength="50" />
+          <Property Name="col_ordem" Type="int" />
+          <Property Name="col_visivel_tablet" Type="bit" />
+          <Property Name="col_filtro_lista" Type="varchar" MaxLength="500" />
+          <Property Name="col_alteravel_inclusao" Type="bit" />
+          <Property Name="col_visivel_inclusao" Type="bit" />
+          <Property Name="col_padrao" Type="varchar" MaxLength="100" />
+          <Property Name="dm_ordenavel" Type="bit" />
+          <Property Name="col_mascara" Type="varchar" MaxLength="100" />
+          <Property Name="nr_qtd_dias_anterior" Type="int" />
+          <Property Name="nr_qtd_dias_frente" Type="int" />
+          <Property Name="dm_virtual" Type="bit" />
+          <Property Name="dm_pode_foto" Type="bit" />
+          <Property Name="midia_mime_type" Type="varchar" MaxLength="50" />
+          <Property Name="cd_usuario_inc" Type="int" />
+          <Property Name="dm_situacao" Type="bit" />
+          <Property Name="dt_inclusao" Type="datetime" />
+          <Property Name="col_podevazio_tablet" Type="bit" />
+          <Property Name="dm_obrigatorio_impressao" Type="bit" />
+          <Property Name="col_visivel_alteracao" Type="bit" />
+          <Property Name="dm_uppercase" Type="bit" />
+          <Property Name="col_visivel_detalhe" Type="bit" />
+          <Property Name="col_marca_dagua" Type="bit" />
+          <Property Name="cd_marca_dagua" Type="int" />
+          <Property Name="col_subpasta" Type="bit" />
+          <Property Name="col_diretorio" Type="varchar" MaxLength="100" />
+          <Property Name="col_ordenacao_padrao" Type="bit" />
+          <Property Name="col_ordenacao_crescente" Type="bit" />
+          <Property Name="col_alteravel_alteracao" Type="bit" />
+          <Property Name="col_filtro_registros" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tb_dependencia">
+          <Key>
+            <PropertyRef Name="dep_codigo" />
+          </Key>
+          <Property Name="dep_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="col_nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dep_nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dep_valor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tb_codigo" Type="int" />
+          <Property Name="cd_usuario_inc" Type="int" />
+          <Property Name="dm_situacao" Type="bit" />
+          <Property Name="dt_inclusao" Type="date" />
+        </EntityType>
+        <EntityType Name="tb_perfil">
+          <Key>
+            <PropertyRef Name="cd_perfil" />
+          </Key>
+          <Property Name="cd_perfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_perfil" Type="varchar" MaxLength="100" />
+          <Property Name="dm_situacao" Type="bit" />
+          <Property Name="cd_usuario_inc" Type="int" />
+          <Property Name="dt_inclusao" Type="date" />
+        </EntityType>
+        <EntityType Name="tb_perfil_acao">
+          <Key>
+            <PropertyRef Name="cd_perfil_acao" />
+          </Key>
+          <Property Name="cd_perfil_acao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cd_perfil" Type="int" />
+          <Property Name="cd_menu" Type="int" />
+          <Property Name="cd_acao" Type="int" />
+          <Property Name="dm_situacao" Type="bit" />
+          <Property Name="cd_usuario_inc" Type="int" />
+          <Property Name="dt_inclusao" Type="date" />
+          <Property Name="tb_codigo" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_relacao">
+          <Key>
+            <PropertyRef Name="rel_codigo" />
+          </Key>
+          <Property Name="rel_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="col_nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pai_tabela" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pai_campo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pai_nome" Type="varchar" MaxLength="100" />
+          <Property Name="dm_situacao" Type="bit" />
+          <Property Name="dm_auto_relacionamento" Type="bit" />
+          <Property Name="nm_tabelas" Type="varchar" MaxLength="100" />
+          <Property Name="cd_usuario_inc" Type="int" />
+          <Property Name="dt_inclusao" Type="date" />
+          <Property Name="imagem_nome" Type="varchar" MaxLength="100" />
+          <Property Name="rel_filtro" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tb_tabela">
+          <Key>
+            <PropertyRef Name="tb_codigo" />
+          </Key>
+          <Property Name="tb_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tb_nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tb_titulo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tb_gerenciador" Type="bit" Nullable="false" />
+          <Property Name="tb_menu" Type="bit" Nullable="false" />
+          <Property Name="tb_selecionar" Type="bit" Nullable="false" />
+          <Property Name="dm_situacao" Type="bit" />
+          <Property Name="nm_coluna_calculada" Type="varchar" MaxLength="100" />
+          <Property Name="cd_usuario_inc" Type="int" />
+          <Property Name="dt_inclusao" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_tabela_acao">
+          <Key>
+            <PropertyRef Name="cd_tabela_acao" />
+          </Key>
+          <Property Name="cd_tabela_acao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tb_codigo" Type="int" Nullable="false" />
+          <Property Name="nm_acao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ds_acao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dm_situacao" Type="bit" Nullable="false" />
+          <Property Name="dm_registro" Type="bit" Nullable="false" />
+          <Property Name="cd_tabela_acao_pai" Type="int" />
+          <Property Name="dm_habilitado" Type="bit" />
+          <Property Name="nm_imagem" Type="varchar" MaxLength="50" />
+          <Property Name="nm_procedure" Type="varchar" MaxLength="500" />
+          <Property Name="cd_usuario_inc" Type="int" />
+          <Property Name="dt_inclusao" Type="date" />
+          <Property Name="dm_registro_multiplo" Type="bit" />
+          <Property Name="ds_pre_condicao" Type="varchar" MaxLength="100" />
+          <Property Name="ds_pos_condicao" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tb_tipodado">
+          <Key>
+            <PropertyRef Name="td_codigo" />
+          </Key>
+          <Property Name="td_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="td_nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="td_nomesql" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="td_nomecs" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="td_delimitador" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="dm_situacao" Type="bit" />
+          <Property Name="cd_usuario_inc" Type="int" />
+          <Property Name="dt_inclusao" Type="date" />
+        </EntityType>
+        <EntityType Name="tb_usuario">
+          <Key>
+            <PropertyRef Name="cd_usuario" />
+          </Key>
+          <Property Name="cd_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_usuario" Type="varchar" MaxLength="100" />
+          <Property Name="ds_email" Type="varchar" MaxLength="100" />
+          <Property Name="nm_login" Type="varchar" MaxLength="100" />
+          <Property Name="img_foto" Type="varchar" MaxLength="100" />
+          <Property Name="ds_senha" Type="varchar" MaxLength="100" />
+          <Property Name="cd_perfil" Type="int" />
+          <Property Name="cd_local" Type="int" />
+          <Property Name="dm_situacao" Type="bit" />
+          <Property Name="dm_gestor_setor" Type="bit" />
+          <Property Name="nr_matricula" Type="varchar" MaxLength="100" />
+          <Property Name="nr_telefone" Type="varchar" MaxLength="100" />
+          <Property Name="dm_tecnico" Type="bit" />
+          <Property Name="cd_usuario_inc" Type="int" />
+          <Property Name="dt_inclusao" Type="date" />
+          <Property Name="cd_sla" Type="int" />
+          <Property Name="cd_orgao" Type="int" />
+          <Property Name="nm_cargo" Type="varchar" MaxLength="100" />
+          <Property Name="dm_ativo" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="EspacoModeloStoreContainer">
+          <EntitySet Name="tb_acao" EntityType="Self.tb_acao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_coluna" EntityType="Self.tb_coluna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_dependencia" EntityType="Self.tb_dependencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_perfil" EntityType="Self.tb_perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_perfil_acao" EntityType="Self.tb_perfil_acao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_relacao" EntityType="Self.tb_relacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_tabela" EntityType="Self.tb_tabela" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_tabela_acao" EntityType="Self.tb_tabela_acao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_tipodado" EntityType="Self.tb_tipodado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_usuario" EntityType="Self.tb_usuario" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EspacoModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_acao">
+          <Key>
+            <PropertyRef Name="cd_acao" />
+            <PropertyRef Name="cd_menu" />
+          </Key>
+          <Property Name="cd_acao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cd_menu" Type="Int32" Nullable="false" />
+          <Property Name="ds_acao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dm_situacao" Type="Boolean" />
+          <Property Name="cd_usuario_inc" Type="Int32" />
+          <Property Name="dt_inclusao" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tb_coluna">
+          <Key>
+            <PropertyRef Name="col_codigo" />
+          </Key>
+          <Property Name="col_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tb_codigo" Type="Int32" Nullable="false" />
+          <Property Name="col_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="col_titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="td_codigo" Type="Int32" Nullable="false" />
+          <Property Name="col_tamanho" Type="Int32" Nullable="false" />
+          <Property Name="col_podevazio" Type="Boolean" Nullable="false" />
+          <Property Name="col_primarykey" Type="Boolean" Nullable="false" />
+          <Property Name="col_visivel" Type="Boolean" Nullable="false" />
+          <Property Name="col_filtrar_coluna" Type="Boolean" Nullable="false" />
+          <Property Name="tb_tabela" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="col_ordem" Type="Int32" />
+          <Property Name="col_visivel_tablet" Type="Boolean" />
+          <Property Name="col_filtro_lista" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="col_alteravel_inclusao" Type="Boolean" />
+          <Property Name="col_visivel_inclusao" Type="Boolean" />
+          <Property Name="col_padrao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dm_ordenavel" Type="Boolean" />
+          <Property Name="col_mascara" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nr_qtd_dias_anterior" Type="Int32" />
+          <Property Name="nr_qtd_dias_frente" Type="Int32" />
+          <Property Name="dm_virtual" Type="Boolean" />
+          <Property Name="dm_pode_foto" Type="Boolean" />
+          <Property Name="midia_mime_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cd_usuario_inc" Type="Int32" />
+          <Property Name="dm_situacao" Type="Boolean" />
+          <Property Name="dt_inclusao" Type="DateTime" Precision="3" />
+          <Property Name="col_podevazio_tablet" Type="Boolean" />
+          <Property Name="dm_obrigatorio_impressao" Type="Boolean" />
+          <Property Name="col_visivel_alteracao" Type="Boolean" />
+          <Property Name="dm_uppercase" Type="Boolean" />
+          <Property Name="col_visivel_detalhe" Type="Boolean" />
+          <Property Name="col_marca_dagua" Type="Boolean" />
+          <Property Name="cd_marca_dagua" Type="Int32" />
+          <Property Name="col_subpasta" Type="Boolean" />
+          <Property Name="col_diretorio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="col_alteravel_alteracao" Type="Boolean" />
+          <Property Name="col_ordenacao_padrao" Type="Boolean" />
+          <Property Name="col_ordenacao_crescente" Type="Boolean" />
+          <Property Name="col_filtro_registros" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tb_dependencia">
+          <Key>
+            <PropertyRef Name="dep_codigo" />
+          </Key>
+          <Property Name="dep_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="col_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dep_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dep_valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tb_codigo" Type="Int32" />
+          <Property Name="cd_usuario_inc" Type="Int32" />
+          <Property Name="dm_situacao" Type="Boolean" />
+          <Property Name="dt_inclusao" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tb_perfil">
+          <Key>
+            <PropertyRef Name="cd_perfil" />
+          </Key>
+          <Property Name="cd_perfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_perfil" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dm_situacao" Type="Boolean" />
+          <Property Name="cd_usuario_inc" Type="Int32" />
+          <Property Name="dt_inclusao" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tb_perfil_acao">
+          <Key>
+            <PropertyRef Name="cd_perfil_acao" />
+          </Key>
+          <Property Name="cd_perfil_acao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cd_perfil" Type="Int32" />
+          <Property Name="cd_menu" Type="Int32" />
+          <Property Name="cd_acao" Type="Int32" />
+          <Property Name="dm_situacao" Type="Boolean" />
+          <Property Name="cd_usuario_inc" Type="Int32" />
+          <Property Name="dt_inclusao" Type="DateTime" Precision="0" />
+          <Property Name="tb_codigo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_relacao">
+          <Key>
+            <PropertyRef Name="rel_codigo" />
+          </Key>
+          <Property Name="rel_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="col_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pai_tabela" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pai_campo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pai_nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dm_situacao" Type="Boolean" />
+          <Property Name="dm_auto_relacionamento" Type="Boolean" />
+          <Property Name="nm_tabelas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cd_usuario_inc" Type="Int32" />
+          <Property Name="dt_inclusao" Type="DateTime" Precision="0" />
+          <Property Name="imagem_nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="rel_filtro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Entidades" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_acao" EntityType="Self.tb_acao" />
+          <EntitySet Name="tb_coluna" EntityType="Self.tb_coluna" />
+          <EntitySet Name="tb_dependencia" EntityType="Self.tb_dependencia" />
+          <EntitySet Name="tb_perfil" EntityType="Self.tb_perfil" />
+          <EntitySet Name="tb_perfil_acao" EntityType="Self.tb_perfil_acao" />
+          <EntitySet Name="tb_relacao" EntityType="Self.tb_relacao" />
+          <EntitySet Name="tb_tipodado" EntityType="EspacoModelo.tb_tipodado" />
+          <EntitySet Name="tb_usuario" EntityType="EspacoModelo.tb_usuario" />
+          <EntitySet Name="tb_tabela_acao" EntityType="EspacoModelo.tb_tabela_acao" />
+          <EntitySet Name="tb_tabela" EntityType="EspacoModelo.tb_tabela" />
+        </EntityContainer>
+        <EntityType Name="tb_tipodado">
+          <Key>
+            <PropertyRef Name="td_codigo" />
+          </Key>
+          <Property Name="td_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="td_nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="td_nomesql" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="td_nomecs" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="td_delimitador" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dm_situacao" Type="Boolean" />
+          <Property Name="cd_usuario_inc" Type="Int32" />
+          <Property Name="dt_inclusao" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tb_usuario">
+          <Key>
+            <PropertyRef Name="cd_usuario" />
+          </Key>
+          <Property Name="cd_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ds_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nm_login" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="img_foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ds_senha" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cd_perfil" Type="Int32" />
+          <Property Name="cd_local" Type="Int32" />
+          <Property Name="dm_situacao" Type="Boolean" />
+          <Property Name="dm_gestor_setor" Type="Boolean" />
+          <Property Name="nr_matricula" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nr_telefone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dm_tecnico" Type="Boolean" />
+          <Property Name="cd_usuario_inc" Type="Int32" />
+          <Property Name="dt_inclusao" Type="DateTime" Precision="0" />
+          <Property Name="cd_sla" Type="Int32" />
+          <Property Name="cd_orgao" Type="Int32" />
+          <Property Name="nm_cargo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dm_ativo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tb_tabela_acao">
+          <Key>
+            <PropertyRef Name="cd_tabela_acao" />
+          </Key>
+          <Property Name="cd_tabela_acao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tb_codigo" Type="Int32" Nullable="false" />
+          <Property Name="nm_acao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ds_acao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dm_situacao" Type="Boolean" Nullable="false" />
+          <Property Name="dm_registro" Type="Boolean" Nullable="false" />
+          <Property Name="cd_tabela_acao_pai" Type="Int32" />
+          <Property Name="dm_habilitado" Type="Boolean" />
+          <Property Name="nm_imagem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nm_procedure" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="cd_usuario_inc" Type="Int32" />
+          <Property Name="dt_inclusao" Type="DateTime" Precision="0" />
+          <Property Name="dm_registro_multiplo" Type="Boolean" />
+          <Property Name="ds_pre_condicao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ds_pos_condicao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tb_tabela">
+          <Key>
+            <PropertyRef Name="tb_codigo" />
+          </Key>
+          <Property Name="tb_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tb_nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tb_titulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tb_gerenciador" Type="Boolean" Nullable="false" />
+          <Property Name="tb_menu" Type="Boolean" Nullable="false" />
+          <Property Name="tb_selecionar" Type="Boolean" Nullable="false" />
+          <Property Name="dm_situacao" Type="Boolean" />
+          <Property Name="nm_coluna_calculada" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cd_usuario_inc" Type="Int32" />
+          <Property Name="dt_inclusao" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EspacoModeloStoreContainer" CdmEntityContainer="Entidades">
+          <EntitySetMapping Name="tb_acao">
+            <EntityTypeMapping TypeName="EspacoModelo.tb_acao">
+              <MappingFragment StoreEntitySet="tb_acao">
+                <ScalarProperty Name="cd_acao" ColumnName="cd_acao" />
+                <ScalarProperty Name="cd_menu" ColumnName="cd_menu" />
+                <ScalarProperty Name="ds_acao" ColumnName="ds_acao" />
+                <ScalarProperty Name="dm_situacao" ColumnName="dm_situacao" />
+                <ScalarProperty Name="cd_usuario_inc" ColumnName="cd_usuario_inc" />
+                <ScalarProperty Name="dt_inclusao" ColumnName="dt_inclusao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_coluna">
+            <EntityTypeMapping TypeName="EspacoModelo.tb_coluna">
+              <MappingFragment StoreEntitySet="tb_coluna">
+                <ScalarProperty Name="col_codigo" ColumnName="col_codigo" />
+                <ScalarProperty Name="tb_codigo" ColumnName="tb_codigo" />
+                <ScalarProperty Name="col_nome" ColumnName="col_nome" />
+                <ScalarProperty Name="col_titulo" ColumnName="col_titulo" />
+                <ScalarProperty Name="td_codigo" ColumnName="td_codigo" />
+                <ScalarProperty Name="col_tamanho" ColumnName="col_tamanho" />
+                <ScalarProperty Name="col_podevazio" ColumnName="col_podevazio" />
+                <ScalarProperty Name="col_primarykey" ColumnName="col_primarykey" />
+                <ScalarProperty Name="col_visivel" ColumnName="col_visivel" />
+                <ScalarProperty Name="col_filtrar_coluna" ColumnName="col_filtrar_coluna" />
+                <ScalarProperty Name="tb_tabela" ColumnName="tb_tabela" />
+                <ScalarProperty Name="col_ordem" ColumnName="col_ordem" />
+                <ScalarProperty Name="col_visivel_tablet" ColumnName="col_visivel_tablet" />
+                <ScalarProperty Name="col_filtro_lista" ColumnName="col_filtro_lista" />
+                <ScalarProperty Name="col_alteravel_inclusao" ColumnName="col_alteravel_inclusao" />
+                <ScalarProperty Name="col_visivel_inclusao" ColumnName="col_visivel_inclusao" />
+                <ScalarProperty Name="col_padrao" ColumnName="col_padrao" />
+                <ScalarProperty Name="dm_ordenavel" ColumnName="dm_ordenavel" />
+                <ScalarProperty Name="col_mascara" ColumnName="col_mascara" />
+                <ScalarProperty Name="nr_qtd_dias_anterior" ColumnName="nr_qtd_dias_anterior" />
+                <ScalarProperty Name="nr_qtd_dias_frente" ColumnName="nr_qtd_dias_frente" />
+                <ScalarProperty Name="dm_virtual" ColumnName="dm_virtual" />
+                <ScalarProperty Name="dm_pode_foto" ColumnName="dm_pode_foto" />
+                <ScalarProperty Name="midia_mime_type" ColumnName="midia_mime_type" />
+                <ScalarProperty Name="cd_usuario_inc" ColumnName="cd_usuario_inc" />
+                <ScalarProperty Name="dm_situacao" ColumnName="dm_situacao" />
+                <ScalarProperty Name="dt_inclusao" ColumnName="dt_inclusao" />
+                <ScalarProperty Name="col_podevazio_tablet" ColumnName="col_podevazio_tablet" />
+                <ScalarProperty Name="dm_obrigatorio_impressao" ColumnName="dm_obrigatorio_impressao" />
+                <ScalarProperty Name="col_visivel_alteracao" ColumnName="col_visivel_alteracao" />
+                <ScalarProperty Name="dm_uppercase" ColumnName="dm_uppercase" />
+                <ScalarProperty Name="col_visivel_detalhe" ColumnName="col_visivel_detalhe" />
+                <ScalarProperty Name="col_marca_dagua" ColumnName="col_marca_dagua" />
+                <ScalarProperty Name="cd_marca_dagua" ColumnName="cd_marca_dagua" />
+                <ScalarProperty Name="col_subpasta" ColumnName="col_subpasta" />
+                <ScalarProperty Name="col_diretorio" ColumnName="col_diretorio" />
+                <ScalarProperty Name="col_alteravel_alteracao" ColumnName="col_alteravel_alteracao" />
+                <ScalarProperty Name="col_ordenacao_padrao" ColumnName="col_ordenacao_padrao" />
+                <ScalarProperty Name="col_ordenacao_crescente" ColumnName="col_ordenacao_crescente" />
+                <ScalarProperty Name="col_filtro_registros" ColumnName="col_filtro_registros" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_dependencia">
+            <EntityTypeMapping TypeName="EspacoModelo.tb_dependencia">
+              <MappingFragment StoreEntitySet="tb_dependencia">
+                <ScalarProperty Name="dep_codigo" ColumnName="dep_codigo" />
+                <ScalarProperty Name="col_nome" ColumnName="col_nome" />
+                <ScalarProperty Name="dep_nome" ColumnName="dep_nome" />
+                <ScalarProperty Name="dep_valor" ColumnName="dep_valor" />
+                <ScalarProperty Name="tb_codigo" ColumnName="tb_codigo" />
+                <ScalarProperty Name="cd_usuario_inc" ColumnName="cd_usuario_inc" />
+                <ScalarProperty Name="dm_situacao" ColumnName="dm_situacao" />
+                <ScalarProperty Name="dt_inclusao" ColumnName="dt_inclusao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_perfil">
+            <EntityTypeMapping TypeName="EspacoModelo.tb_perfil">
+              <MappingFragment StoreEntitySet="tb_perfil">
+                <ScalarProperty Name="cd_perfil" ColumnName="cd_perfil" />
+                <ScalarProperty Name="nm_perfil" ColumnName="nm_perfil" />
+                <ScalarProperty Name="dm_situacao" ColumnName="dm_situacao" />
+                <ScalarProperty Name="cd_usuario_inc" ColumnName="cd_usuario_inc" />
+                <ScalarProperty Name="dt_inclusao" ColumnName="dt_inclusao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_perfil_acao">
+            <EntityTypeMapping TypeName="EspacoModelo.tb_perfil_acao">
+              <MappingFragment StoreEntitySet="tb_perfil_acao">
+                <ScalarProperty Name="cd_perfil_acao" ColumnName="cd_perfil_acao" />
+                <ScalarProperty Name="cd_perfil" ColumnName="cd_perfil" />
+                <ScalarProperty Name="cd_menu" ColumnName="cd_menu" />
+                <ScalarProperty Name="cd_acao" ColumnName="cd_acao" />
+                <ScalarProperty Name="dm_situacao" ColumnName="dm_situacao" />
+                <ScalarProperty Name="cd_usuario_inc" ColumnName="cd_usuario_inc" />
+                <ScalarProperty Name="dt_inclusao" ColumnName="dt_inclusao" />
+                <ScalarProperty Name="tb_codigo" ColumnName="tb_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_relacao">
+            <EntityTypeMapping TypeName="EspacoModelo.tb_relacao">
+              <MappingFragment StoreEntitySet="tb_relacao">
+                <ScalarProperty Name="rel_filtro" ColumnName="rel_filtro" />
+                <ScalarProperty Name="rel_codigo" ColumnName="rel_codigo" />
+                <ScalarProperty Name="col_nome" ColumnName="col_nome" />
+                <ScalarProperty Name="pai_tabela" ColumnName="pai_tabela" />
+                <ScalarProperty Name="pai_campo" ColumnName="pai_campo" />
+                <ScalarProperty Name="pai_nome" ColumnName="pai_nome" />
+                <ScalarProperty Name="dm_situacao" ColumnName="dm_situacao" />
+                <ScalarProperty Name="dm_auto_relacionamento" ColumnName="dm_auto_relacionamento" />
+                <ScalarProperty Name="nm_tabelas" ColumnName="nm_tabelas" />
+                <ScalarProperty Name="cd_usuario_inc" ColumnName="cd_usuario_inc" />
+                <ScalarProperty Name="dt_inclusao" ColumnName="dt_inclusao" />
+                <ScalarProperty Name="imagem_nome" ColumnName="imagem_nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_tipodado">
+            <EntityTypeMapping TypeName="EspacoModelo.tb_tipodado">
+              <MappingFragment StoreEntitySet="tb_tipodado">
+                <ScalarProperty Name="dt_inclusao" ColumnName="dt_inclusao" />
+                <ScalarProperty Name="cd_usuario_inc" ColumnName="cd_usuario_inc" />
+                <ScalarProperty Name="dm_situacao" ColumnName="dm_situacao" />
+                <ScalarProperty Name="td_delimitador" ColumnName="td_delimitador" />
+                <ScalarProperty Name="td_nomecs" ColumnName="td_nomecs" />
+                <ScalarProperty Name="td_nomesql" ColumnName="td_nomesql" />
+                <ScalarProperty Name="td_nome" ColumnName="td_nome" />
+                <ScalarProperty Name="td_codigo" ColumnName="td_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_usuario">
+            <EntityTypeMapping TypeName="EspacoModelo.tb_usuario">
+              <MappingFragment StoreEntitySet="tb_usuario">
+                <ScalarProperty Name="dm_ativo" ColumnName="dm_ativo" />
+                <ScalarProperty Name="nm_cargo" ColumnName="nm_cargo" />
+                <ScalarProperty Name="cd_orgao" ColumnName="cd_orgao" />
+                <ScalarProperty Name="cd_sla" ColumnName="cd_sla" />
+                <ScalarProperty Name="dt_inclusao" ColumnName="dt_inclusao" />
+                <ScalarProperty Name="cd_usuario_inc" ColumnName="cd_usuario_inc" />
+                <ScalarProperty Name="dm_tecnico" ColumnName="dm_tecnico" />
+                <ScalarProperty Name="nr_telefone" ColumnName="nr_telefone" />
+                <ScalarProperty Name="nr_matricula" ColumnName="nr_matricula" />
+                <ScalarProperty Name="dm_gestor_setor" ColumnName="dm_gestor_setor" />
+                <ScalarProperty Name="dm_situacao" ColumnName="dm_situacao" />
+                <ScalarProperty Name="cd_local" ColumnName="cd_local" />
+                <ScalarProperty Name="cd_perfil" ColumnName="cd_perfil" />
+                <ScalarProperty Name="ds_senha" ColumnName="ds_senha" />
+                <ScalarProperty Name="img_foto" ColumnName="img_foto" />
+                <ScalarProperty Name="nm_login" ColumnName="nm_login" />
+                <ScalarProperty Name="ds_email" ColumnName="ds_email" />
+                <ScalarProperty Name="nm_usuario" ColumnName="nm_usuario" />
+                <ScalarProperty Name="cd_usuario" ColumnName="cd_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_tabela_acao">
+            <EntityTypeMapping TypeName="EspacoModelo.tb_tabela_acao">
+              <MappingFragment StoreEntitySet="tb_tabela_acao">
+                <ScalarProperty Name="ds_pos_condicao" ColumnName="ds_pos_condicao" />
+                <ScalarProperty Name="ds_pre_condicao" ColumnName="ds_pre_condicao" />
+                <ScalarProperty Name="dm_registro_multiplo" ColumnName="dm_registro_multiplo" />
+                <ScalarProperty Name="dt_inclusao" ColumnName="dt_inclusao" />
+                <ScalarProperty Name="cd_usuario_inc" ColumnName="cd_usuario_inc" />
+                <ScalarProperty Name="nm_procedure" ColumnName="nm_procedure" />
+                <ScalarProperty Name="nm_imagem" ColumnName="nm_imagem" />
+                <ScalarProperty Name="dm_habilitado" ColumnName="dm_habilitado" />
+                <ScalarProperty Name="cd_tabela_acao_pai" ColumnName="cd_tabela_acao_pai" />
+                <ScalarProperty Name="dm_registro" ColumnName="dm_registro" />
+                <ScalarProperty Name="dm_situacao" ColumnName="dm_situacao" />
+                <ScalarProperty Name="ds_acao" ColumnName="ds_acao" />
+                <ScalarProperty Name="nm_acao" ColumnName="nm_acao" />
+                <ScalarProperty Name="tb_codigo" ColumnName="tb_codigo" />
+                <ScalarProperty Name="cd_tabela_acao" ColumnName="cd_tabela_acao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_tabela">
+            <EntityTypeMapping TypeName="EspacoModelo.tb_tabela">
+              <MappingFragment StoreEntitySet="tb_tabela">
+                <ScalarProperty Name="dt_inclusao" ColumnName="dt_inclusao" />
+                <ScalarProperty Name="cd_usuario_inc" ColumnName="cd_usuario_inc" />
+                <ScalarProperty Name="nm_coluna_calculada" ColumnName="nm_coluna_calculada" />
+                <ScalarProperty Name="dm_situacao" ColumnName="dm_situacao" />
+                <ScalarProperty Name="tb_selecionar" ColumnName="tb_selecionar" />
+                <ScalarProperty Name="tb_menu" ColumnName="tb_menu" />
+                <ScalarProperty Name="tb_gerenciador" ColumnName="tb_gerenciador" />
+                <ScalarProperty Name="tb_titulo" ColumnName="tb_titulo" />
+                <ScalarProperty Name="tb_nome" ColumnName="tb_nome" />
+                <ScalarProperty Name="tb_codigo" ColumnName="tb_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

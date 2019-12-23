@@ -1,0 +1,61 @@
+﻿@using TesteMeta2.Core
+@{
+    ViewBag.Title = "CrudLista";
+    Tabela tabela = (Tabela)ViewBag.Tabela;
+    List<Registro> Registros = (List<Registro>)ViewBag.Dados;
+}
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        @{
+            List<Coluna> colunas = tabela.Colunas.Where(ee => ee.Visivel || ee.PrimaryKey).OrderBy(ee => ee.Ordem).ToList();
+        }
+        <tr>
+            @foreach (Coluna coluna in colunas)
+            {
+                if (coluna.Visivel)
+                {
+                    <td>
+                        @coluna.Titulo
+                    </td>
+                }
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Registro registro in Registros)
+        {
+            int posicao = 0;
+            <tr>
+                @foreach (Coluna coluna in colunas)
+                {
+                    if (coluna.Visivel)
+                    {
+                        String texto = registro.Dados[posicao];
+                        <td>
+
+                            @if (coluna.TipoDado.Nome.StartsWith("Imagem"))
+                            {
+                                <img src="@texto" height="30" width="30" />
+                            }
+                            else
+                            {
+                                @texto
+                            }
+                        </td>
+                    }
+                    posicao++;
+                }
+
+                <td>
+                    @foreach (Acao acao in tabela.Acoes.Where(ee => ee.AcaoNoRegistro))
+                    {
+                        <a href="@Url.Action(acao.Nome, "Crud", new { id = registro.codigo })" title="@acao.Titulo">
+                            <img src="../../../@acao.UrlImagem" />
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
